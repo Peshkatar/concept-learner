@@ -86,10 +86,6 @@ class ConceptLearner:
         return self._lgg_series
     
     @property
-    def get_conjective_rule(self) -> pd.Series:
-        return self._lgg_series.T
-    
-    @property
-    def get_conjective_rule2(self) -> None:
-        for i, value in self._lgg_series:
-            print(f"{i} = {value} ∧")
+    def get_conjective_rule(self) -> None:
+        for i, value in self._lgg_series.items():
+            print(f"{i} = {value} ∧ ", end="")
