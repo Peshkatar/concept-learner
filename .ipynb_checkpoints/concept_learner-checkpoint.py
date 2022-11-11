@@ -11,7 +11,7 @@ class ConceptLearner:
         
     def _split(self, test_size_: float) -> tuple[pd.DataFrame]:
         """Splits dataset into training and test"""
-        return train_test_split(self._df, test_size=test_size_)
+        return train_test_split(self._df, test_size=test_size_, random_state=20)
     
     def model(self) -> pd.Series:
         """Calls algorithms"""
@@ -63,8 +63,8 @@ class ConceptLearner:
     @property    
     def accuracy(self) -> float:
         cm = self.confusion_matrix()
-        TP = cm.iloc[0, 0]
-        TN = cm.iloc[0, 1]
+        TN = cm.iloc[0, 0]
+        TP = cm.iloc[0, 1]
         return (TP + TN) / cm.sum().sum()
     
     @property
