@@ -82,3 +82,7 @@ class ConceptLearner:
     @property
     def get_lgg(self):
         return self._lgg_series
+    
+    @property
+    def get_conjective_rule(self):
+        return get_lgg.T
