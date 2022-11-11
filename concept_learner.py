@@ -67,6 +67,20 @@ class ConceptLearner:
         TN = cm.iloc[0, 1]
         return (TP + TN) / cm.sum().sum()
     
+    @property
+    def precision(self) -> float:
+        cm = self.confusion_matrix()
+        TP = cm.iloc[0, 0]
+        FP = cm.iloc[0, 1]
+        return TP/(FP + TP)
+    
+    @property
+    def sensitivity(self) -> float:
+        cm = self.confusion_matrix()
+        TP = cm.iloc[0, 0]
+        FN = cm.iloc[1, 0]
+        return TP/(TP+FN)
+    
     @property    
     def true_positive_rate(self) -> float:
         cm = self.confusion_matrix()
