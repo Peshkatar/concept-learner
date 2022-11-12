@@ -81,7 +81,12 @@ class ConceptLearner:
     def get_lgg(self) -> pd.Series:
         return self._lgg_series
     
-    @property
-    def get_conjuctive_rule(self) -> None:
-        for i, value in self._lgg_series.items():
-            print(f"{i} = {value} ∧ ", end="")
+    def get_conjunctive_rule(self) -> None:
+        for i, (l, value) in enumerate(self._lgg_series.items()):
+            if i < len(self._lgg_series)-1:
+                print(f"{l} = {value}", end=" ∧ ")
+            else:
+                print(f"{l} = {value}")
+    
+    def __len__(self) -> int:
+        return len(self._lgg_series)
