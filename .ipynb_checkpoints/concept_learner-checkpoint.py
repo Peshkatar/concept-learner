@@ -17,11 +17,10 @@ class ConceptLearner:
         """Calls algorithms"""
         self._lgg_series = self._lgg_set(self._train)
     
-    def prediction(self) -> None:
+    def predict(self) -> None:
         indecies = np.where((self._test[self._lgg_series.index] == self._lgg_series).all(axis=1) == True)[0]
         self._test["predicted_spam"] = 0
         self._test.iloc[indecies, -1] = 1
-
         
     def _lgg_set(self, D: pd.DataFrame) -> pd.Series:
         """
@@ -62,37 +61,20 @@ class ConceptLearner:
 
     @property    
     def accuracy(self) -> float:
-        cm = self.confusion_matrix()
-        TN = cm.iloc[0, 0]
-        TP = cm.iloc[0, 1]
-        return (TP + TN) / cm.sum().sum()
+        return (self._test.predicted_spam == self._test.is_spam).sum() / self._test.shape[0]
     
-    @property
-    def precision(self) -> float:
-        cm = self.confusion_matrix()
-        TP = cm.iloc[0, 0]
-        FP = cm.iloc[0, 1]
-        return TP/(FP + TP)
-    
-    @property
+    @property    
     def sensitivity(self) -> float:
-        cm = self.confusion_matrix()
-        TP = cm.iloc[0, 0]
-        FN = cm.iloc[1, 0]
-        return TP/(TP+FN)
+        return self._test.loc[self._test.predicted_spam == self._test.is_spam, "is_spam"].sum() / (self._test.is_spam == 1).sum()
     
     @property    
-    def true_positive_rate(self) -> float:
-        cm = self.confusion_matrix()
-        return cm.iloc[1, 1] / cm.iloc[:, 1].sum()
-    
-    @property    
-    def true_negative_rate(self) -> float:
-        cm = self.confusion_matrix()
-        return cm.iloc[0, 0] / cm.iloc[:, 0].sum()
+    def specificity(self) -> float:
+        return (
+            (self._test.predicted_spam == 0) & (self._test.is_spam == 0)).sum() / (
+            ((self._test.predicted_spam == 1) & (self._test.is_spam == 0)) + ((self._test.predicted_spam == 0) &(self._test.is_spam == 0))).sum()
     
     @property
-    def get_df(self) -> pd.DataFrame:
+    def get_frame(self) -> pd.DataFrame:
         return self._test
     
     @property
@@ -100,6 +82,6 @@ class ConceptLearner:
         return self._lgg_series
     
     @property
-    def get_conjective_rule(self) -> None:
+    def get_conjuctive_rule(self) -> None:
         for i, value in self._lgg_series.items():
             print(f"{i} = {value} ∧ ", end="")
