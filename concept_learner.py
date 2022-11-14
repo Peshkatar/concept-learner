@@ -59,19 +59,16 @@ class ConceptLearner:
     def confusion_matrix(self) -> pd.crosstab:
         return pd.crosstab(self._test[self._class_column], self._test["predicted_spam"], rownames=["Actual"], colnames=["Predicted"])
 
-    @property    
     def accuracy(self) -> float:
         return (self._test.predicted_spam == self._test.is_spam).sum() / self._test.shape[0]
     
-    @property    
     def sensitivity(self) -> float:
         return self._test.loc[self._test.predicted_spam == self._test.is_spam, "is_spam"].sum() / (self._test.is_spam == 1).sum()
     
-    @property    
     def specificity(self) -> float:
-        return (
-            (self._test.predicted_spam == 0) & (self._test.is_spam == 0)).sum() / (
-            ((self._test.predicted_spam == 1) & (self._test.is_spam == 0)) + ((self._test.predicted_spam == 0) &(self._test.is_spam == 0))).sum()
+        TP = ((self._test.predicted_spam == 0) & (self._test.is_spam == 0)).sum()
+        FP = ((self._test.predicted_spam == 1) & (self._test.is_spam == 0)).sum()
+        return TP / (FP + TP)
     
     @property
     def get_frame(self) -> pd.DataFrame:
