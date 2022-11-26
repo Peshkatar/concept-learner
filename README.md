@@ -1,7 +1,5 @@
 # LAB1-DV2599
 
-How to collaborate in a data-science project.
+If you can't run the code due to incompatible or lacking modules please use the `environment.yml` with miniconda or alike virtual environment managers. (The docker component is experimental and may not work.)
 
-Firstly, we need to share a common virtual environment. We do this by extracting ones miniconda environment as a .yml-file and from this file we use docker-compose to run the file one ones computer.
-
-***docker run -d -p 8888:5000 test docker-compose up -d --build .***
+The code consists of two parts: an interactive python notebook (ran in jupyter lab) and a python-file containing an object-oriented implementation of the concept learning algorithm. Please run the notebook first and after an initial skim check  `concept_learner.py`.
