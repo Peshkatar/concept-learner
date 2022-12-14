@@ -1,0 +1,26 @@
+- Introduction
+  o Problem formulation
+  o Concept learner 
+  o Spambase data set
+
+- Method
+  o Preprocessing (data cleaning, distribution, discretization)
+  o Formulas and equations (instance space, hypothesis space, conjunctive concept)
+  o Conjuctive rule
+  o Code and algorithm implementation
+  o Training and evaluation (training, testing, accuracy)
+
+- Results
+  o Data cleaning and transformation results
+  o Instance space, hypothesis space and conjunctive concept results)
+  o Conjunctive rule
+  o Model evaluation results (accuracy)
+
+- Discussion
+
+- Conclussion
+
+- References
+
+
+
