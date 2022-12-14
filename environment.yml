@@ -1,4 +1,4 @@
-name: minimal-ds
+name: assignment1
 channels:
   - conda-forge
   - defaults
@@ -165,4 +165,3 @@ dependencies:
   - zipp=3.8.0=pyhd8ed1ab_0
   - zlib=1.2.12=hfe4f2af_2
   - zstd=1.5.2=ha9df2e0_2
-prefix: /Users/arlindiseni/opt/miniconda3/envs/minimal-ds
