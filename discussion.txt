@@ -1,0 +1,10 @@
+We found out the following from our results: Our model has low predictive accuracy (43-59% depending on 
+parameters), low time complexity (very fast execution time) and low training cost (computationally 
+inexpensive). We consider our predictive power to be very low and for this reason we cant recommend such a 
+system for this classification problem. However, considering we only had 4601 rows of data, we can see how a 
+larger data set might lend us greater prediction power. Also, preprocessing greatly affects the accuracy of the 
+algorithm. For our tests we saw accuracies from 43 % (few bins with uniform) to 59% (10 bins with uniform). If 
+we had tuned this value more and experimented with different techniques we might have seen an even greater 
+performance upgrade. Considering the current landscape for classification models, we tend to see accuracies 
+over 90% on average with modern supervised machine learning models[x]. Therefore, in respect to modern 
+algorithms, the concept learner is obsolete. 

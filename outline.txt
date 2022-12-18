@@ -22,5 +22,8 @@
 
 - References
 
+$\sqrt{4}$ <br>
 
+\$\times$
 
+$$\sqrt{3}$$
